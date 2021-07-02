@@ -1,21 +1,21 @@
-import fetchColor from './common/fetchColor';
-import { useEffect, useState } from 'react';
+import FetchColor from './common/FetchColor';
+import ColorList from './components/ColorList';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  let [responseData, setResponseData] = useState({});
-  const [click, setClick] = useState('');
+  const [colorData, changeColor] = useState('');
 
-  useEffect(async () => {
-    let color = fetchColor();
-
-    setResponseData(color);
-    console.log(responseData);
-  }, [click]);
+  const changeColorHandler = () => {
+    FetchColor(changeColor);
+  };
 
   return (
     <div className='App'>
-      <button onClick={setClick}>Change Color</button>
+      <button onClick={changeColorHandler}>
+        {colorData ? colorData.tags[0].name : 'Change Color'}
+      </button>
+      <ColorList color={colorData} />
     </div>
   );
 }
