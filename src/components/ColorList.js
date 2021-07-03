@@ -3,7 +3,12 @@ const ColorList = ({ color }) => {
     <ul>
       <li>Loading colors...</li>
       {color && (
-        <li>
+        <li
+          style={{
+            color: `#${color.hex}`,
+            fontWeight: 'bold',
+          }}
+        >
           {color.tags[0].name}: {color.hex}
         </li>
       )}
