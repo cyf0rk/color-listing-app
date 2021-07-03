@@ -1,14 +1,18 @@
-const ColorListElement = ({ color, index, colorArray, innerRef }) => {
+const ColorListElement = ({ color, index, colorArray, provided }) => {
   return (
     <li
-      style={{
-        color: `#${color.hex}`,
-        fontWeight: index === colorArray.length - 1 && 'bold',
-        cursor: 'pointer',
-      }}
-      ref={innerRef}
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
     >
-      {color.tags[0].name}: #{color.hex}
+      <span
+        style={{
+          color: `#${color.hex}`,
+          fontWeight: index === colorArray.length - 1 && 'bold',
+        }}
+      >
+        {color.tags[0].name}: #{color.hex}
+      </span>
     </li>
   );
 };

@@ -11,6 +11,19 @@ function App() {
     FetchColor(setNewColor, colorsData);
   };
 
+  const onDragEndHandler = (currentDrag) => {
+    if (!currentDrag.destination) {
+      return;
+    }
+    const colors = Array.from(colorsData);
+
+    const [recordedColor] = colors.splice(currentDrag.source.index, 1);
+
+    colors.splice(currentDrag.destination.index, 0, recordedColor);
+
+    setNewColor(colors);
+  };
+
   return (
     <div className='App'>
       <button
@@ -24,7 +37,7 @@ function App() {
           ? colorsData[colorsData.length - 1].hex
           : 'Change Color'}
       </button>
-      <DragDropContext>
+      <DragDropContext onDragEnd={onDragEndHandler}>
         <ColorList colors={colorsData} />
       </DragDropContext>
     </div>

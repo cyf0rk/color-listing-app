@@ -15,9 +15,7 @@ const ColorList = ({ colors }) => {
                     color={color}
                     index={i}
                     colorArray={arr}
-                    innerRef={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
+                    provided={provided}
                   />
                 )}
               </Draggable>
