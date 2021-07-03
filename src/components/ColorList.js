@@ -1,19 +1,21 @@
 const ColorList = ({ colors }) => {
   return (
     <ul>
-      <li>Loading colors...</li>
-      {colors &&
-        colors.map((color) => (
+      {colors ? (
+        colors.map((color, i, arr) => (
           <li
             style={{
               color: `#${color.hex}`,
+              fontWeight: i === arr.length - 1 && 'bold',
             }}
             key={color.id}
           >
-            {}
             {color.tags[0].name}: #{color.hex}
           </li>
-        ))}
+        ))
+      ) : (
+        <li>Loading colors...</li>
+      )}
     </ul>
   );
 };

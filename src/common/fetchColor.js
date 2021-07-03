@@ -4,9 +4,13 @@ const FetchColor = async (changeColor, colorData) => {
   );
   const data = await response.json();
   const [color] = data.colors;
-  typeof colorData === 'object'
-    ? changeColor([...colorData, color])
-    : changeColor([color]);
+  if (color.hex.length > 2 && !colorData.includes(color)) {
+    typeof colorData === 'object'
+      ? changeColor([...colorData, color])
+      : changeColor([color]);
+  } else {
+    console.log('This color is empty');
+  }
 };
 
 export default FetchColor;
