@@ -1,21 +1,23 @@
 import FetchColor from './common/FetchColor';
 import ColorList from './components/ColorList';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
   const [colorData, changeColor] = useState('');
 
   const changeColorHandler = () => {
-    FetchColor(changeColor);
+    FetchColor(changeColor, colorData);
   };
 
   return (
     <div className='App'>
-      <button onClick={changeColorHandler}>
-        {colorData ? colorData.tags[0].name : 'Change Color'}
+      <button className='change-color-button' onClick={changeColorHandler}>
+        {typeof colorData === 'object'
+          ? colorData[colorData.length - 1].hex
+          : 'Change Color'}
       </button>
-      <ColorList color={colorData} />
+      <ColorList colors={colorData} />
     </div>
   );
 }

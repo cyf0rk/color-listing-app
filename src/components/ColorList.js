@@ -1,17 +1,19 @@
-const ColorList = ({ color }) => {
+const ColorList = ({ colors }) => {
   return (
     <ul>
       <li>Loading colors...</li>
-      {color && (
-        <li
-          style={{
-            color: `#${color.hex}`,
-            fontWeight: 'bold',
-          }}
-        >
-          {color.tags[0].name}: {color.hex}
-        </li>
-      )}
+      {colors &&
+        colors.map((color) => (
+          <li
+            style={{
+              color: `#${color.hex}`,
+            }}
+            key={color.id}
+          >
+            {}
+            {color.tags[0].name}: #{color.hex}
+          </li>
+        ))}
     </ul>
   );
 };
