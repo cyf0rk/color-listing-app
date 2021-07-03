@@ -1,12 +1,17 @@
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 import ColorListElement from './ColorListElement';
+import './ColorList.css';
 
 const ColorList = ({ colors }) => {
   return (
     <Droppable droppableId='colors-list'>
       {(provided) => (
-        <ul ref={provided.innerRef} {...provided.droppableProps}>
+        <ul
+          className='colors-list'
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+        >
           {colors ? (
             colors.map((color, i, arr) => (
               <Draggable draggableId={color.hex} index={i} key={color.id}>

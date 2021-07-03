@@ -1,6 +1,9 @@
+import './ColorListElement.css';
+
 const ColorListElement = ({ color, index, colorArray, provided }) => {
   return (
     <li
+      className='colors-list__color'
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}

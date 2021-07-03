@@ -1,7 +1,9 @@
 import FetchColor from './common/FetchColor';
-import ColorList from './components/ColorList';
+import ColorList from './components/ColorList/ColorList';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useState } from 'react';
+import InputNewColor from './components/InputNewColor/InputNewColor';
+import Card from './components/UI/Card';
 import './App.css';
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className='app-container'>
       <button
         className='change-color-button'
         style={{
@@ -34,12 +36,15 @@ function App() {
         onClick={changeColorHandler}
       >
         {typeof colorsData === 'object'
-          ? colorsData[colorsData.length - 1].hex
+          ? `#${colorsData[colorsData.length - 1].hex}`
           : 'Change Color'}
       </button>
-      <DragDropContext onDragEnd={onDragEndHandler}>
-        <ColorList colors={colorsData} />
-      </DragDropContext>
+      <Card className='colors-list'>
+        <DragDropContext onDragEnd={onDragEndHandler}>
+          <ColorList colors={colorsData} />
+        </DragDropContext>
+      </Card>
+      <InputNewColor />
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.input-new-color {
+  padding: 20px 0;
+}
+
+.input-new-color__input {
+  height: 30px;
+  max-width: 170px;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 8px;
+}
