@@ -1,14 +1,19 @@
-import { useState } from 'react';
-
 import './InputNewColor.css';
 
-const InputNewColor = () => {
-  const [newInput, setNewInput] = useState('');
-
+const InputNewColor = ({ onNewColorInput }) => {
   const newInputHandler = (input) => {
-    let isHex = validateHexColor(input.target.value);
-    if (input.key === 'Enter' && isHex) {
-      setNewInput(input.target.value);
+    let inputHex = input.target.value;
+    if (input.key === 'Enter' && validateHexColor(inputHex)) {
+      const newColor = {
+        hex: inputHex,
+        id: Symbol(inputHex).toString(),
+        tags: [
+          {
+            name: 'testName',
+          },
+        ],
+      };
+      onNewColorInput(newColor);
       input.target.value = '';
     }
   };

@@ -1,13 +1,16 @@
 import FetchColor from './common/FetchColor';
 import AddNewColor from './components/AddNewColor/AddNewColor';
 import { useState } from 'react';
+import ConditionalAddToList from './common/ConditionalAddToList';
+
 import './App.css';
 
 function App() {
   const [colorsData, setNewColor] = useState('');
 
-  const changeColorHandler = () => {
-    FetchColor(setNewColor, colorsData);
+  const changeColorHandler = async () => {
+    const newFetchedColor = await FetchColor();
+    ConditionalAddToList(newFetchedColor, colorsData, setNewColor);
   };
 
   const clearList = () => {

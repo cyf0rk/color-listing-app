@@ -8,3 +8,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.clear-list {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

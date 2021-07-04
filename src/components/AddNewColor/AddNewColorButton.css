@@ -8,11 +8,3 @@
   border-radius: 6px;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }
-
-.clear-list {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
