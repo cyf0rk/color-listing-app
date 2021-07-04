@@ -3,17 +3,29 @@ import ColorList from '../ColorList/ColorList';
 import AddNewColorButton from './AddNewColorButton';
 import { DragDropContext } from 'react-beautiful-dnd';
 import ConditionalAddToList from '../../common/ConditionalAddToList';
+import DisplayError from './DisplayError';
 
 import Card from '../UI/Card';
 import './AddNewColor.css';
 import { useState, useEffect } from 'react';
 
-const AddNewColor = ({ onColorChange, colors, onSetNewColor }) => {
+const AddNewColor = ({
+  onColorChange,
+  colors,
+  onSetNewColor,
+  setErrorMessage,
+  error,
+}) => {
   const [newInputColor, setNewInputColor] = useState('');
 
   useEffect(() => {
     typeof newInputColor === 'object' &&
-      ConditionalAddToList(newInputColor, colors, onSetNewColor);
+      ConditionalAddToList(
+        newInputColor,
+        colors,
+        onSetNewColor,
+        setErrorMessage
+      );
   }, [newInputColor]);
 
   const onDragEndHandler = (currentDrag) => {
@@ -36,7 +48,11 @@ const AddNewColor = ({ onColorChange, colors, onSetNewColor }) => {
           <ColorList colors={colors} />
         </DragDropContext>
       </Card>
-      <InputNewColor onNewColorInput={setNewInputColor} />
+      <InputNewColor
+        onNewColorInput={setNewInputColor}
+        setErrorMessage={setErrorMessage}
+      />
+      <DisplayError error={error} />
     </div>
   );
 };

@@ -1,10 +1,22 @@
-const ConditionalAddToList = (newColor, currentColors, addNewColor) => {
-  if (newColor.hex.length > 2 && !currentColors.includes(newColor)) {
-    typeof currentColors === 'object'
-      ? addNewColor([...currentColors, newColor])
-      : addNewColor([newColor]);
+const ConditionalAddToList = (
+  newColor,
+  currentColors,
+  addNewColor,
+  setErrorMessage
+) => {
+  if (newColor.hex.length === 6) {
+    switch (typeof currentColors) {
+      case 'object':
+        currentColors.find(({ hex }) => hex === newColor.hex)
+          ? setErrorMessage('Color already exists in the list')
+          : addNewColor([...currentColors, newColor]);
+        break;
+      default:
+        addNewColor([newColor]);
+        break;
+    }
   } else {
-    console.log('Error: This color is not valid');
+    setErrorMessage('Generated hex color is not valid');
   }
 };
 

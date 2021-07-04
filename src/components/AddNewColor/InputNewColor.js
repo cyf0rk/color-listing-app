@@ -1,12 +1,12 @@
 import './InputNewColor.css';
 
-const InputNewColor = ({ onNewColorInput }) => {
+const InputNewColor = ({ onNewColorInput, setErrorMessage }) => {
   const newInputHandler = (input) => {
     let inputHex = input.target.value;
     if (input.key === 'Enter' && validateHexColor(inputHex)) {
       const newColor = {
         hex: inputHex,
-        id: Symbol(inputHex).toString(),
+        id: new Date().valueOf(),
         tags: [
           {
             name: 'testName',
@@ -14,15 +14,17 @@ const InputNewColor = ({ onNewColorInput }) => {
         ],
       };
       onNewColorInput(newColor);
+      setErrorMessage('');
       input.target.value = '';
     }
   };
 
   const validateHexColor = (input) => {
     if (input.length === 6 && !isNaN(Number('0x' + input))) {
+      setErrorMessage('');
       return true;
     } else {
-      console.log('Entered value is not a valid hex color');
+      setErrorMessage('Entered value is not a valid hex color');
     }
   };
 

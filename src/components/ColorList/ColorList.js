@@ -14,7 +14,7 @@ const ColorList = ({ colors }) => {
         >
           {colors ? (
             colors.map((color, i, arr) => (
-              <Draggable draggableId={color.hex} index={i} key={color.id}>
+              <Draggable draggableId={color.hex} index={i} key={color.id + i}>
                 {(provided) => (
                   <ColorListElement
                     color={color}
