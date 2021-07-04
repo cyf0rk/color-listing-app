@@ -1,6 +1,7 @@
 import './ColorListElement.css';
 
 const ColorListElement = ({ color, index, colorArray, provided }) => {
+  const mainColorStylingCondition = index === colorArray.length - 1;
   return (
     <li
       className='colors-list__color'
@@ -11,7 +12,8 @@ const ColorListElement = ({ color, index, colorArray, provided }) => {
       <span
         style={{
           color: `#${color.hex}`,
-          fontWeight: index === colorArray.length - 1 && 'bold',
+          fontWeight: mainColorStylingCondition && 'bold',
+          fontSize: mainColorStylingCondition && '1.2rem',
         }}
       >
         {color.tags[0].name}: #{color.hex}

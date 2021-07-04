@@ -26,7 +26,7 @@ const ColorList = ({ colors }) => {
               </Draggable>
             ))
           ) : (
-            <li>Loading colors...</li>
+            <li className='colors-list__color'>Loading colors...</li>
           )}
           {provided.placeholder}
         </ul>

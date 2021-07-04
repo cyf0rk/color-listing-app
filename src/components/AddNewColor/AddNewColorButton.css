@@ -1,0 +1,18 @@
+.change-color-button {
+  height: 35px;
+  width: 150px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.clear-list {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
